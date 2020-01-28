@@ -26,17 +26,12 @@ public class Neo4jRepository {
     }
 
     public Set<String> getPersonNamesInDbNaive() {
-        Driver driver = driverProvider.createNewDriver();
-        Set<String> result;
-        try {
-            result = driver.session()
+        try (Driver driver = driverProvider.createNewDriver()) {
+            return driver.session()
                     .run("MATCH (n:Person) RETURN n.name")
                     .stream()
                     .map(r -> r.get("n.name").asString())
                     .collect(Collectors.toSet());
-            return result;
-        } finally {
-            driver.close();
         }
     }
 }
