@@ -8,9 +8,11 @@ import java.util.Map;
 
 @Component
 public class CredentialsProvider {
+    //hardcoded example
     private static Map<String, AuthToken> credentials = Map.of("admin", AuthTokens.basic("neo4j", "admin"),
             "documentReader", AuthTokens.basic("documentReader", "pwd"));
 
+    //dummy mapping from real username to db username
     public String getDbUserForUsername(String name) {
         return name;
     }
