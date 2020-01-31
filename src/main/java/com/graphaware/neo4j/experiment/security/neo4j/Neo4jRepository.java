@@ -11,14 +11,16 @@ import java.util.stream.Collectors;
 public class Neo4jRepository {
 
     private final DriverProvider driverProvider;
+    private final Driver driver;
 
     @Autowired
-    public Neo4jRepository(DriverProvider driverProvider) {
+    public Neo4jRepository(DriverProvider driverProvider, Driver driver) {
         this.driverProvider = driverProvider;
+        this.driver = driver;
     }
 
     public Set<String> getPersonNamesInDb() {
-        return driverProvider.getDriver().session()
+        return driver.session()
                 .run("MATCH (n:Person) RETURN n.name")
                 .stream()
                 .map(r -> r.get("n.name").asString())

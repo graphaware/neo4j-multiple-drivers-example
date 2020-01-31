@@ -1,10 +1,13 @@
 package com.graphaware.neo4j.experiment.security.configuration;
 
 
+import com.graphaware.neo4j.experiment.security.neo4j.DriverProvider;
 import com.graphaware.neo4j.experiment.security.neo4j.Neo4jContextFilter;
+import org.neo4j.driver.Driver;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Configuration
 public class AppConfig {
@@ -17,5 +20,11 @@ public class AppConfig {
         registration.setName("neo4jContextFilter");
         registration.setOrder(1);
         return registration;
+    }
+
+    @Bean(destroyMethod = "")
+    @RequestScope
+    public Driver createDriver(DriverProvider driverProvider) {
+        return driverProvider.getDriver();
     }
 }
