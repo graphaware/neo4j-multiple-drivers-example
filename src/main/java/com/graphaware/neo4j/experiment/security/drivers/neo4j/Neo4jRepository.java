@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.neo4j;
 
 import org.neo4j.driver.Driver;
 import org.springframework.beans.factory.annotation.Autowired;

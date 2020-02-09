@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.neo4j;
 
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
@@ -20,7 +20,7 @@ public class DriverProvider {
     }
 
     public Driver getDriver() {
-        String userName = DbContextHolder.getUsername().orElseThrow(() -> new RuntimeException("impossible"));
+        String userName = DbContextHolder.getUsername().orElseThrow(() -> new IllegalStateException("This should not happen"));
         String dbUser = credentialsProvider.getDbUserForUsername(userName);
         return existingDrivers.computeIfAbsent(dbUser,
                 (dbUserName) -> GraphDatabase.driver("bolt://localhost", credentialsProvider.getCredentialsForDbName(dbUserName)));
@@ -28,7 +28,7 @@ public class DriverProvider {
 
     //just for load test comparison
     public Driver createNewDriver() {
-        String userName = DbContextHolder.getUsername().orElseThrow(() -> new RuntimeException("impossible"));
+        String userName = DbContextHolder.getUsername().orElseThrow(() -> new IllegalStateException("This should not happen"));
         String dbUser = credentialsProvider.getDbUserForUsername(userName);
         return GraphDatabase.driver("bolt://localhost", credentialsProvider.getCredentialsForDbName(dbUser));
     }

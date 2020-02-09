@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.neo4j;
 
 import java.util.Optional;
 
@@ -13,7 +13,7 @@ public class DbContextHolder {
 
     public static void setUsername(String user) {
         if (user == null) {
-            throw new NullPointerException("Screw you!");
+            throw new NullPointerException("User name not provided!");
         }
         contextHolder.set(user);
     }

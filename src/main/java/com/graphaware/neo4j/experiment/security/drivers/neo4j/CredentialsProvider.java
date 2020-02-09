@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.neo4j;
 
 import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;
@@ -19,7 +19,7 @@ public class CredentialsProvider {
 
     public AuthToken getCredentialsForDbName(String dbName) {
         if (!credentials.containsKey(dbName)) {
-            throw new IllegalArgumentException("Your argument sux!");
+            throw new IllegalArgumentException("Credentials do not exist for " + dbName);
         }
         return credentials.get(dbName);
     }

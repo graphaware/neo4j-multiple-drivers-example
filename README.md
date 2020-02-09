@@ -1,3 +1,15 @@
-# 4.0 security
+# Neo4j 4.0- Drivers & Authorization
 
-Testing Neo4j 4.0 security
+Sample code that demonstrates a couple of ways for authorization via drivers in a Java application
+
+## Naive Implementation
+
+Create a driver per request.
+See `SimpleController.getPersonNamesNaive()`
+
+## Cached Implementation
+
+Obtain driver from a cache
+See `SimpleController.getPersonNamesCached()`
+
+## AbstractRoutingDriver Implementation

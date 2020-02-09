@@ -1,8 +1,8 @@
-package com.graphaware.neo4j.experiment.security.configuration;
+package com.graphaware.neo4j.experiment.security.drivers.configuration;
 
 
-import com.graphaware.neo4j.experiment.security.neo4j.DriverProvider;
-import com.graphaware.neo4j.experiment.security.neo4j.Neo4jContextFilter;
+import com.graphaware.neo4j.experiment.security.drivers.neo4j.DriverProvider;
+import com.graphaware.neo4j.experiment.security.drivers.neo4j.Neo4jContextFilter;
 import org.neo4j.driver.Driver;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
