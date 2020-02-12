@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.drivers.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.utils;
 
 import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;

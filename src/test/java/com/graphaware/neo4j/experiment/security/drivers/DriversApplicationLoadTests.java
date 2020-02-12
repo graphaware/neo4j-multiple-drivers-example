@@ -1,7 +1,7 @@
 package com.graphaware.neo4j.experiment.security.drivers;
 
-import com.graphaware.neo4j.experiment.security.drivers.neo4j.DbContextHolder;
 import com.graphaware.neo4j.experiment.security.drivers.neo4j.DriverProvider;
+import com.graphaware.neo4j.experiment.security.drivers.utils.DbContextHolder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -34,24 +34,38 @@ class DriversApplicationLoadTests {
 
     @Test
     void cachedDriverLoadTest() throws Exception {
+        this.mockMvc.perform(get("/cached").header("username", "admin")).andExpect(status().isOk());
         long start = System.currentTimeMillis();
 
         for (int i = 0; i < 10; i++) {
             this.mockMvc.perform(get("/cached").header("username", "admin")).andExpect(status().isOk());
         }
 
-        LOG.info("Queries with cached driver took + " + (System.currentTimeMillis() - start) + "ms");
+        LOG.info("Queries with cached driver took " + (System.currentTimeMillis() - start) + "ms");
+    }
+
+    @Test
+    void routingDriverLoadTest() throws Exception {
+        this.mockMvc.perform(get("/routing").header("username", "admin")).andExpect(status().isOk());
+        long start = System.currentTimeMillis();
+
+        for (int i = 0; i < 10; i++) {
+            this.mockMvc.perform(get("/routing").header("username", "admin")).andExpect(status().isOk());
+        }
+
+        LOG.info("Queries with routing driver took " + (System.currentTimeMillis() - start) + "ms");
     }
 
     @Test
     void naiveDriverLoadTest() throws Exception {
+        this.mockMvc.perform(get("/naive").header("username", "admin")).andExpect(status().isOk());
         long start = System.currentTimeMillis();
 
         for (int i = 0; i < 10; i++) {
             this.mockMvc.perform(get("/naive").header("username", "admin")).andExpect(status().isOk());
         }
 
-        LOG.info("Queries with naive driver took + " + (System.currentTimeMillis() - start) + "ms");
+        LOG.info("Queries with naive driver took " + (System.currentTimeMillis() - start) + "ms");
     }
 
 }

@@ -26,4 +26,9 @@ public class SimpleController {
     public Set<String> getPersonNamesCached() {
         return neo4jRepository.getPersonNamesInDb();
     }
+
+    @GetMapping("/routing")
+    public Set<String> getPersonNamesCachedRouting() {
+        return neo4jRepository.getPersonNamesInDbRouting();
+    }
 }

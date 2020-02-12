@@ -1,4 +1,4 @@
-package com.graphaware.neo4j.experiment.security.drivers.neo4j;
+package com.graphaware.neo4j.experiment.security.drivers.utils;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;

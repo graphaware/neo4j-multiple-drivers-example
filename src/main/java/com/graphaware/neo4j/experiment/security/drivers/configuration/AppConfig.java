@@ -2,7 +2,7 @@ package com.graphaware.neo4j.experiment.security.drivers.configuration;
 
 
 import com.graphaware.neo4j.experiment.security.drivers.neo4j.DriverProvider;
-import com.graphaware.neo4j.experiment.security.drivers.neo4j.Neo4jContextFilter;
+import com.graphaware.neo4j.experiment.security.drivers.utils.Neo4jContextFilter;
 import org.neo4j.driver.Driver;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +22,15 @@ public class AppConfig {
         return registration;
     }
 
-    @Bean(destroyMethod = "")
+    @Bean(destroyMethod = "", name = "provider")
     @RequestScope
     public Driver createDriver(DriverProvider driverProvider) {
         return driverProvider.getDriver();
+    }
+
+    @Bean(name = "naive")
+    @RequestScope
+    public Driver createNaiveDriver(DriverProvider driverProvider) {
+        return driverProvider.createNewDriver();
     }
 }
