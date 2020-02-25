@@ -18,6 +18,7 @@ public class TestConfig {
             .withAdminPassword("admin");
 
     @Bean
+    @Primary
     public DriverProvider getDriverProvider(CredentialsProvider credentialsProvider) {
         if (!neo4j.isCreated()) {
             neo4j.start();
