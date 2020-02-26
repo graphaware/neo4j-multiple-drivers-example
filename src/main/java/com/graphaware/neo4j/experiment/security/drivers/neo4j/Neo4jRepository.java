@@ -32,18 +32,6 @@ public class Neo4jRepository {
                 .collect(Collectors.toSet());
     }
 
-    //    More primite implementation
-//
-//    public Set<String> getPersonNamesInDbNaive() {
-//        try (Driver driver = driverProvider.createNewDriver()) {
-//            return driver.session()
-//                    .run("MATCH (n:Person) RETURN n.name")
-//                    .stream()
-//                    .map(r -> r.get("n.name").asString())
-//                    .collect(Collectors.toSet());
-//        }
-//    }
-
     public Set<String> getPersonNamesInDb() {
         return driverProvider.session()
                 .run("MATCH (n:Person) RETURN n.name")

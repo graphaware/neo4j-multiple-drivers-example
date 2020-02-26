@@ -13,3 +13,5 @@ Obtain driver from a cache
 See `SimpleController.getPersonNamesCached()`
 
 ## AbstractRoutingDriver Implementation
+A wrapping Driver dynamically selects the target driver and returns a Session
+See `SimpleController.getPersonNamesCachedRouting()`

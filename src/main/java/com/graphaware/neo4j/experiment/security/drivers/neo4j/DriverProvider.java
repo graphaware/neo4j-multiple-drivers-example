@@ -31,7 +31,6 @@ public class DriverProvider {
                 (dbUserName) -> GraphDatabase.driver(uri, credentialsProvider.getCredentialsForDbName(dbUserName)));
     }
 
-    //just for load test comparison
     public Driver createNewDriver() {
         String userName = DbContextHolder.getUsername().orElseThrow(() -> new IllegalStateException("This should not happen"));
         String dbUser = credentialsProvider.getDbUserForUsername(userName);
